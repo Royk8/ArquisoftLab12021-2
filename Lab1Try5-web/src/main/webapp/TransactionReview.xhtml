@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        555555555
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="UserName:" for="userName" />
+                    <p:inputText id="userName" value="#{clientMBean.clientInfo.userName}" title="UserName" required="true" requiredMessage="The UserName field is required."/>
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="#{clientMBean.clientInfo.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                    <p:outputLabel value="PhoneNumber:" for="phoneNumber" />
+                    <p:inputText id="phoneNumber" value="#{clientMBean.clientInfo.phoneNumber}" title="PhoneNumber" />
+                    <p:outputLabel value="Paymentinfo:" for="paymentinfo" />
+                    <p:selectOneMenu id="paymentinfo" value="#{clientMBean.clientInfo.paymentinfo}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="CardholderName:" for="cardholderName" />
+                    <p:inputText id="cardholderName" value="#{clientMBean.clientInfo.cardholderName}" title="CardholderName" />
+                    <p:outputLabel value="CardNumber:" for="cardNumber" />
+                    <p:inputText id="cardNumber" value="#{clientMBean.clientInfo.cardNumber}" title="CardNumber" />
+                    <p:outputLabel value="ExpirationDate:" for="expirationDate" />
+                    <p:inputText id="expirationDate" value="#{clientMBean.clientInfo.expirationDate}" title="ExpirationDate" />
+                    <p:outputLabel value="OrderCost:" for="orderCost" />
+                    <p:inputText id="orderCost" value="#{clientMBean.clientInfo.orderCost}" title="OrderCost" />
+                    <p:outputLabel value="Timestamp:" for="timestamp" />
+                    <p:inputText id="timestamp" value="#{clientMBean.clientInfo.timestamp}" title="Timestamp" />
+                    <p:outputLabel value="OrderId:" for="orderId" />
+                    <p:inputText id="orderId" value="#{clientMBean.clientInfo.orderId}" title="OrderId" />
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
