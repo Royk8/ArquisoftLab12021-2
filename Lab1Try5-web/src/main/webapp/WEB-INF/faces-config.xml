@@ -9,5 +9,21 @@
             <from-outcome>PAY</from-outcome>
             <to-view-id>/PostTransaction.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>CANCEL</from-outcome>
+            <to-view-id>/PostTransaction.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/PostTransaction.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>PAYAGAIN</from-outcome>
+            <to-view-id>/TransactionReview.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>clientMBean</managed-bean-name>
+        <managed-bean-class>com.udea.controller.ClientMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

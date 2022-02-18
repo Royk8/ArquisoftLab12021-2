@@ -5,43 +5,40 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Preview de Pago</title>
     </h:head>
-    <h:body>
-        555555555
+    <h:body>        
         <f:view>
-
-
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="UserName:" for="userName" />
+                <h1><h:outputText value="Información de pago."/></h1>
+                <p:panelGrid columns="2"> 
+                    <p:outputLabel value="Valor a Pagar" for="orderCost" />
+                    <p:inputText id="orderCost" value="#{clientMBean.clientInfo.orderCost}" title="OrderCost" required="true"/>
+                    <p:outputLabel value="Nombre" for="userName" />
                     <p:inputText id="userName" value="#{clientMBean.clientInfo.userName}" title="UserName" required="true" requiredMessage="The UserName field is required."/>
-                    <p:outputLabel value="Email:" for="email" />
+                    <p:outputLabel value="E-mail:" for="email" />
                     <p:inputText id="email" value="#{clientMBean.clientInfo.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-                    <p:outputLabel value="PhoneNumber:" for="phoneNumber" />
+                    <p:outputLabel value="Numero telefonico" for="phoneNumber" />
                     <p:inputText id="phoneNumber" value="#{clientMBean.clientInfo.phoneNumber}" title="PhoneNumber" />
-                    <p:outputLabel value="Paymentinfo:" for="paymentinfo" />
-                    <p:selectOneMenu id="paymentinfo" value="#{clientMBean.clientInfo.paymentinfo}" >
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
-                    </p:selectOneMenu>
-                    <p:outputLabel value="CardholderName:" for="cardholderName" />
-                    <p:inputText id="cardholderName" value="#{clientMBean.clientInfo.cardholderName}" title="CardholderName" />
-                    <p:outputLabel value="CardNumber:" for="cardNumber" />
-                    <p:inputText id="cardNumber" value="#{clientMBean.clientInfo.cardNumber}" title="CardNumber" />
-                    <p:outputLabel value="ExpirationDate:" for="expirationDate" />
-                    <p:inputText id="expirationDate" value="#{clientMBean.clientInfo.expirationDate}" title="ExpirationDate" />
-                    <p:outputLabel value="OrderCost:" for="orderCost" />
-                    <p:inputText id="orderCost" value="#{clientMBean.clientInfo.orderCost}" title="OrderCost" />
-                    <p:outputLabel value="Timestamp:" for="timestamp" />
-                    <p:inputText id="timestamp" value="#{clientMBean.clientInfo.timestamp}" title="Timestamp" />
-                    <p:outputLabel value="OrderId:" for="orderId" />
-                    <p:inputText id="orderId" value="#{clientMBean.clientInfo.orderId}" title="OrderId" />
+                    <p:outputLabel value="Nombre en la Tarjeta" for="cardholderName" />
+                    <p:inputText id="cardholderName" value="#{clientMBean.clientInfo.cardholderName}" title="CardholderName" required="true"/>
+                    <p:outputLabel value="Numero de la tarjeta" for="cardNumber" />
+                    <p:inputText id="cardNumber" binding="#{cardNInput}" value="#{clientMBean.clientInfo.cardNumber}" title="CardNumber" required="true" />
+                                 
+                    <p:outputLabel value="Codigo de Seguridad (CVV)" for="expirationDate" />
+                    <p:inputText id="cvv" title="CardNumber" required="true"/>
+                    <p:outputLabel value="Fecha de Expiración" for="expirationDate" />
+                    <p:inputText id="expirationDate" value="#{clientMBean.clientInfo.expirationDate}" title="ExpirationDate" required="true"/>
                 </p:panelGrid>
+                <h2>Captcha</h2>
+                <p:captcha id="captcha"/>
+                <br/>
+                <h:commandButton id="pay" value="Pagar" action="#{clientMBean.pay()}"/>
+                <h:commandButton id="cancel" value="Salir Sin Pagar" action ="#{clientMBean.cancel()}"/>                 
             </h:form>
         </f:view>
-
     </h:body>
+    
+    <!-->onkeyup="{clientMBean.checkCardNumber(cardNInput.value)}"</!-->
 </html>
 
